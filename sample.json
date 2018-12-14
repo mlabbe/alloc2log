@@ -1,0 +1,19 @@
+[
+    {call: 'malloc',
+     bytes: 666,
+     hash_id: 327582,
+     thread_id: 1,
+     stack: [
+         {lib: '/lib/x86_64-linux-gnu/libc.so.6',
+          func: '_IO_file_doallocate',
+          offset: '0x8c',
+          addr: '0x7fbf42a1a18c'},
+         
+         {lib: '/lib/x86_64-linux-gnu/libc.so.6',
+          func: '_IO_doallocbuf',
+          offset: '0x79',
+          addr: '0x7fbf42a2a379'},
+     ],
+     
+    }
+]
