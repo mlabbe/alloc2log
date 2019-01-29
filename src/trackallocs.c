@@ -8,6 +8,7 @@
 //
 typedef struct {
     void *heap_ptr;
+    size_t bytes;
     uint32_t stack_hash_id;
 }a2l_allocrecord_t;
 
@@ -17,6 +18,9 @@ static a2l_allocrecord_t a2l_allocrecord_records[MAX_ALLOC_RECORDS_SOFT]; // tod
 static void a2l_track_allocs_init(void) {
     ftgc_hashindex_init(&a2l_allocrecord_hindex, MAX_ALLOC_RECORDS_SOFT);
 }
+
+// todo:
+// implement ptr to a2l_alloc_record dictionary
 
 static void
 a2l_track_alloc(void *ptr) {

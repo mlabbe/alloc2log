@@ -7,7 +7,9 @@ void do_work(void) {
 
     char *p = new char[666];
     p = new char[666];
+    delete p;
     puts("do_work return");
+
 }
 
 int main(void) {

@@ -55,20 +55,21 @@ def start_build():
 
 # return a list of files
 def list_input_files():
-    return ['src/*.c']
+    return ['src/alloc2log.c']
 
 # return command to build single file in_path or None to skip
 def build_this(in_path):
-    return exp('gcc -fPIC -shared -o bin/linux/alloc2log.so $in_path --std=gnu99 -ldl -lpthread')
+    return exp('gcc -fPIC -shared -O3 -o bin/linux/alloc2log.so $in_path --std=gnu99 -ldl -lpthread')
 
 # called after every input file has been built
 def end_build(in_files):
     # build the test program
-    cmd("g++ test/alloctest.cpp -o bin/linux/alloctest")
+    cmd("g++ -g test/alloctest.cpp -o bin/linux/alloctest")
 
 # called when the user requests --clean
 def clean(in_files):
     rm('bin')
+    cmd("rm a2l-*.log") # clean runtime byproducts too
 
 
     
