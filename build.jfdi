@@ -15,7 +15,7 @@ available functions:
   cp(src, dst)  - copy a file or directory
   rm(str)       - remove file or directory
   arg(str)      - convert a /flag into a -flag depending on compiler
-  arm('?')      - arm environment with make-like variables (LD, CC, etc.)
+  use('?')      - arm environment with make-like variables (LD, CC, etc.)
   cmd(list|str) - run a command on a shell, fatal if error, stdout returns as str
   die(str)      - fail build with a message, errorlevel 3
   env(str)      - return environment variable or None
@@ -34,7 +34,7 @@ variables:
   HOST_OS       - compiling machine OS    (str)
   TARGET_OS     - target machine OS       (str)
 
-after arm(), variables, where applicable:
+after use(), variables, where applicable:
   CC            - c compiler
   CXX           - c++ compiler
   LD            - linker
@@ -50,7 +50,7 @@ JFDI_VERSION = 1
 
 # called at the start of the build
 def start_build():
-    arm('gcc')
+    use('gcc')
     mkd('bin/linux')
 
 # return a list of files
@@ -69,7 +69,6 @@ def end_build(in_files):
 # called when the user requests --clean
 def clean(in_files):
     rm('bin')
-    cmd("rm a2l-*.log") # clean runtime byproducts too
 
 
     
